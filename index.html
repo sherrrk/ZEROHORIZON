@@ -165,54 +165,38 @@ body::before {
         position: fixed !important;
 
         top: auto !important;
-
         bottom: 0 !important;
-
         left: 0 !important;
-
         right: 0 !important;
 
         width: 100% !important;
-
         height: 70px !important;
 
-        padding: 0 0 env(safe-area-inset-bottom) 0 !important; 
-
+        padding: 0 0 env(safe-area-inset-bottom) 0 !important;
         margin: 0 !important;
 
         border-right: none !important;
-
         border-bottom: none !important;
-
         border-top: 2px solid var(--red) !important;
 
         background: #050505 !important;
 
-        z-index: 9000 !important; /* 스플래시(10000)보다 아래 */
+        z-index: 9000 !important;
 
         display: flex !important;
-
         align-items: center !important;
 
+        /* 추가: 모바일 스크롤/렌더링 안정화 */
+        transform: translateZ(0);
+        will-change: transform;
+        -webkit-transform: translateZ(0);
     }
 
-    .nav {
-
-        flex-direction: row !important;
-
-        width: 100% !important;
-
-        height: 100% !important;
-
-        justify-content: space-around !important;
-
-        align-items: center !important;
-
-        margin: 0 !important;
-
-        padding: 0 5px !important;
-
+    /* 본문이 하단바에 가리지 않도록 보정 */
+    main {
+        padding-bottom: calc(100px + env(safe-area-inset-bottom)) !important;
     }
+}
 
     .nav button {
 
